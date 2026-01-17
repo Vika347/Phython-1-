@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><title>Пользователь</title><meta charset="utf-8"></head>
+<body>
+    <h2>Пользователь</h2>
+    <a href="/">Главная</a> | <a href="/currencies">Валюты</a>
+
+    <p><strong>ID:</strong> {{ user.id }}</p>
+    <p><strong>Имя:</strong> {{ user.name }}</p>
+    <p><strong>Группа:</strong> {{ user.group }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <h3>Подписки ({{ subscriptions|length }}):</h3>
+    <ul>
+        {% for currency in subscriptions %}
+        <li>
+            {{ currency.char_code }} - {{ currency.name }} ({{ currency.value }})
+            <form method="POST" action="/unsubscribe" style="display: inline;">
+                <input type="hidden" name="id" value="{{ currency.id }}">
+                <button type="submit">Отписаться</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% if available %}
+    <h3>Доступные валюты:</h3>
+    <ul>
+        {% for currency in available %}
+        <li>
+            {{ currency.char_code }} - {{ currency.name }} ({{ currency.value }})
+            <form method="POST" action="/subscribe" style="display: inline;">
+                <input type="hidden" name="id" value="{{ currency.id }}">
+                <button type="submit">Подписаться</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

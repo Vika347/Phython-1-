@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><title>Валюты</title><meta charset="utf-8"></head>
+<body>
+    <h2>Валюты</h2>
+    <a href="/">Главная</a> | <a href="/user">Пользователь</a>
+
+    <p><a href="/currency/update">Обновить курсы</a></p>
+
+    <h3>Добавить:</h3>
+    <form method="POST" action="/currency/add">
+        <input type="text" name="char_code" placeholder="Код (USD)" list="codes" required>
+        <datalist id="codes">
+            {% for code, info in popular.items() %}
+            <option value="{{ code }}">{{ info.name }}</option>
+            {% endfor %}
+        </datalist><br>
+
+        <input type="text" name="num_code" placeholder="Число (840)" list="nums">
+        <datalist id="nums">
+            {% for code, info in popular.items() %}
+            <option value="{{ info.num }}">{{ code }}</option>
+            {% endfor %}
+        </datalist><br>
+
+        <input type="text" name="name" placeholder="Название"><br>
+        <input type="number" step="0.01" name="value" placeholder="Курс" required><br>
+        <button type="submit">Добавить</button>
+    </form>
+
+    <h3>Список:</h3>
+    <table border="1">
+        <tr><th>Код</th><th>Название</th><th>Курс</th><th>Удалить</th></tr>
+        {% for c in currencies %}
+        <tr>
+            <td>{{ c.char_code }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.value }}</td>
+            <td><a href="/currency/delete?id={{ c.id }}">✗</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
