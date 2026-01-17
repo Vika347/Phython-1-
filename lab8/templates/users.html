@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Пользователи - {{myapp}}</title>
+</head>
+<body>
+    <h1>Пользователи</h1>
+
+    <!-- Информация об авторе -->
+    <p>Автор: {{author_name}}</p>
+    <p>Группа: {{group}}</p>
+    <hr>
+
+    <!-- Навигация -->
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="/users">Пользователи</a> |
+        <a href="/currencies">Валюты</a> |
+        <a href="/author">Об авторе</a>
+    </nav>
+
+    <hr>
+
+    <h2>Список пользователей</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Подписок</th>
+            <th>Действие</th>
+        </tr>
+        {% for data in users_data %}
+        <tr>
+            <td>{{ data.user.id }}</td>
+            <td>{{ data.user.name }}</td>
+            <td>{{ data.user.name.lower().replace(' ', '.') }}@example.com</td>
+            <td>{{ data.subscription_count }}</td>
+            <td><a href="/user?id={{ data.user.id }}">Просмотреть</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p><a href="/">← На главную</a></p>
+</body>
+</html>

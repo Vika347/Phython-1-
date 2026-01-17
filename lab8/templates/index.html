@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{myapp}} - Главная</title>
+</head>
+<body>
+    <h1>{{myapp}}</h1>
+    <p>Версия: {{app_version}}</p>
+
+    <!-- Информация об авторе -->
+    <p>Автор: {{author_name}}</p>
+    <p>Группа: {{group}}</p>
+    <hr>
+
+    <!-- Навигация -->
+    <nav>
+        {% for item in navigation %}
+            <a href="{{ item.href }}">{{ item.caption }}</a> |
+        {% endfor %}
+    </nav>
+
+    <hr>
+
+    <h2>Описание</h2>
+    <p>Простое приложение для отслеживания курсов валют.</p>
+
+    <h2>Статистика</h2>
+    <ul>
+        <li>Пользователей: {{users_count}}</li>
+        <li>Валют: {{currencies_count}}</li>
+        <li>Подписок: {{subscriptions_count}}</li>
+    </ul>
+</body>
+</html>

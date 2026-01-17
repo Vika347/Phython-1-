@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Об авторе - {{myapp}}</title>
+</head>
+<body>
+    <h1>Об авторе</h1>
+
+    <!-- Информация об авторе -->
+    <p><strong>Имя:</strong> {{author_name}}</p>
+    <p><strong>Группа:</strong> {{group}}</p>
+    <p><strong>Приложение:</strong> {{myapp}}</p>
+    <p><strong>Версия:</strong> {{app_version}}</p>
+    <hr>
+
+    <!-- Навигация -->
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="/users">Пользователи</a> |
+        <a href="/currencies">Валюты</a> |
+        <a href="/author">Об авторе</a>
+    </nav>
+
+    <hr>
+
+    <h2>Информация о разработчике</h2>
+    <p>Студент, изучающий Python, веб-разработку и фреймворки.</p>
+    <p>Данное приложение создано в рамках учебного проекта.</p>
+
+    <h3>Используемые технологии:</h3>
+    <ul>
+        <li>Python</li>
+        <li>Jinja2</li>
+        <li>HTTPServer</li>
+        <li>MVC архитектура</li>
+    </ul>
+
+    <p><a href="/">← На главную</a></p>
+</body>
+</html>
